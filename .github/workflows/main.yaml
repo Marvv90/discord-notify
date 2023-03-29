@@ -1,0 +1,16 @@
+name: Notification on Push
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord Notifications
+        uses: marvv90/discord-notify@master
+        with:
+          discord-webhook: ${{ secrets.webhook }}
+          message: A new commit has been pushed

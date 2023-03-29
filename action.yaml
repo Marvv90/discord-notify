@@ -1,0 +1,17 @@
+name: 'Discord Workflow Notifier'
+description: 'A Github Action to Report Workflow & Job Status to Discord'
+author: 'Marvin Schmidt'
+
+inputs:
+  discord-webhook:
+    description: 'The WebHook Url to Call'
+    required: true
+
+  discord-message:
+    description: 'The message to Display'
+    required: false
+    default: 'Test Message'
+
+runs:
+  using: 'node16'
+  main: './dist/index.js'
