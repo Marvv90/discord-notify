@@ -11913,6 +11913,44 @@ exports["default"] = executeWebhook;
 
 /***/ }),
 
+/***/ 3920:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.formatEvent = void 0;
+const formatters = {
+    push: pushFormatter,
+    pull_request: pullRequestFormatter,
+    release: releaseFormatter,
+};
+function formatEvent(event, payload) {
+    let msg = 'No Futher Information';
+    if (event in formatters) {
+        try {
+            return formatters[event](payload) || msg;
+        }
+        catch (error) { }
+    }
+    return msg;
+}
+exports.formatEvent = formatEvent;
+function pushFormatter(payload) {
+    return `[\`${payload.head_commit.id.substring(0, 7)}\`](${payload.head_commit.url}) ${payload.head_commit.message}`;
+}
+function pullRequestFormatter(payload) {
+    return `[\`#${payload.pull_request.number}\`](${payload.pull_request.html_url}) ${payload.pull_request.title}`;
+}
+function releaseFormatter(payload) {
+    const { name, body } = payload.release;
+    const nameText = name ? `**${name}**` : '';
+    return `${nameText}${(nameText && body) ? "\n" : ""}${body || ""}`;
+}
+
+
+/***/ }),
+
 /***/ 6144:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -11957,6 +11995,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const GitHub = __importStar(__nccwpck_require__(5438));
 const discord_1 = __importDefault(__nccwpck_require__(2381));
+const format_1 = __nccwpck_require__(3920);
 const { GITHUB_RUN_ID, GITHUB_WORKFLOW } = process.env;
 function workflowStatusFromJobs(jobs) {
     let statuses = jobs.map(j => j.status);
@@ -12019,6 +12058,11 @@ function run() {
                                         name: 'Ref',
                                         value: context.ref,
                                         inline: true
+                                    },
+                                    {
+                                        name: `Event - ${context.eventName}`,
+                                        value: (0, format_1.formatEvent)(context.eventName, context.payload),
+                                        inline: false
                                     },
                                 ],
                                 footer: {
