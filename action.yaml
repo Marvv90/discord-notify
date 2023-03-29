@@ -11,9 +11,14 @@ inputs:
     description: 'The Discord WebHook Username'
     required: false
     default: 'GitHub'
-    
+
+  discord-avatar:
+    description: 'The Avatar to Display'
+    required: false
+    default: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+
   discord-message:
-    description: 'The message to Display'
+    description: 'The Message to Display'
     required: false
     default: 'Test Message'
 

@@ -5021,9 +5021,11 @@ const core = __importStar(__nccwpck_require__(2186));
 const sender_1 = __nccwpck_require__(5426);
 const webhook = core.getInput('discord-webhook', { required: true });
 const username = core.getInput('discord-username');
+const avatar = core.getInput('discord-avatar');
 const message = core.getInput('discord-message', { required: true });
 let payload = JSON.stringify({
     username: username,
+    avatar_url: avatar,
     content: message,
 });
 (() => __awaiter(void 0, void 0, void 0, function* () {
