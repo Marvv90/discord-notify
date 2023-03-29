@@ -12,5 +12,6 @@ jobs:
       - name: Discord Notifications
         uses: marvv90/discord-notify@master
         with:
+          github-token: ${{ secrets.github_token}}
           discord-webhook: ${{ secrets.webhook }}
           message: A new commit has been pushed

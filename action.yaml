@@ -1,8 +1,15 @@
 name: 'Discord Workflow Notifier'
 description: 'A Github Action to Report Workflow & Job Status to Discord'
 author: 'Marvin Schmidt'
-
+branding:
+  icon: 'message-square'
+  color: 'gray-dark'
+  
 inputs:
+  github-token:
+    description: 'The GitHub Token'
+    required: true
+
   discord-webhook:
     description: 'The WebHook Url to Call'
     required: true
@@ -21,6 +28,21 @@ inputs:
     description: 'The Message to Display'
     required: false
     default: 'Test Message'
+
+  discord-clr-success:
+    description: 'Override the default Success Color ( Hex - Code Default: #17cf48)'
+    required: false
+    default: '17cf48'
+
+  discord-clr-failure:
+    description: 'Override the default Failure Color ( Hex - Code Default: #e72727)'
+    required: false
+    default: 'e72727'
+
+  discord-clr-cancelled:
+    description: 'Override the default Cancelled Color ( Hex - Code Default: #d3d3d3)'
+    required: false
+    default: 'd3d3d3'
 
 runs:
   using: 'node16'
