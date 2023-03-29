@@ -24,7 +24,7 @@ inputs:
     required: false
     default: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
 
-  discord-message:
+  discord-title:
     description: 'The Title to Display'
     required: false
 
