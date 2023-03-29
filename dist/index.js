@@ -5019,9 +5019,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const sender_1 = __nccwpck_require__(5426);
-const webhook = core.getInput("discord-webhook", { required: true });
-let message = core.getInput("discord-message", { required: true });
+const webhook = core.getInput('discord-webhook', { required: true });
+const username = core.getInput('discord-username');
+const message = core.getInput('discord-message', { required: true });
 let payload = JSON.stringify({
+    username: username,
     content: message,
 });
 (() => __awaiter(void 0, void 0, void 0, function* () {
