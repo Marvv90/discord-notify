@@ -12012,7 +12012,7 @@ function run() {
                                 fields: [
                                     {
                                         name: 'Repository',
-                                        value: `[${context.repo.owner}/${context.repo.repo}]`,
+                                        value: `[${context.repo.owner}/${context.repo.repo}](https://github.com/${context.repo.owner}/${context.repo.repo})`,
                                         inline: true
                                     },
                                     {
