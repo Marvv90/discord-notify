@@ -4,7 +4,7 @@ author: 'Marvin Schmidt'
 branding:
   icon: 'message-square'
   color: 'gray-dark'
-  
+
 inputs:
   github-token:
     description: 'The GitHub Token'
@@ -25,9 +25,12 @@ inputs:
     default: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
 
   discord-message:
+    description: 'The Title to Display'
+    required: false
+
+  discord-message:
     description: 'The Message to Display'
     required: false
-    default: 'Test Message'
 
   discord-clr-success:
     description: 'Override the default Success Color ( Hex - Code Default: #17cf48)'

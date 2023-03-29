@@ -11977,7 +11977,8 @@ function run() {
                 const discordWebhook = core.getInput('discord-webhook', { required: true });
                 const username = core.getInput('discord-username');
                 const avatar = core.getInput('discord-avatar');
-                const message = core.getInput('discord-message', { required: true });
+                const title = core.getInput('discord-title');
+                const message = core.getInput('discord-message');
                 const clrSuccess = parseInt(core.getInput('discord-clr-success').trim().replace(/^#/g, ''), 16);
                 const clrFailure = parseInt(core.getInput('discord-clr-failure').trim().replace(/^#/g, ''), 16);
                 const clrCancelled = parseInt(core.getInput('discord-clr-cancelled').trim().replace(/^#/g, ''), 16);
@@ -11999,8 +12000,12 @@ function run() {
                         avatar_url: avatar,
                         embeds: [
                             {
+                                title: title,
                                 description: message,
-                                color: color
+                                color: color,
+                                footer: {
+                                    text: (new Date()).toISOString()
+                                }
                             }
                         ]
                     };
