@@ -15,5 +15,5 @@ jobs:
         with:
           github-token: ${{ secrets.github_token}}
           discord-webhook: ${{ secrets.webhook }}
-          discord-title: Test
+          discord-title: Test2
           discord-message: A new commit has been pushed
