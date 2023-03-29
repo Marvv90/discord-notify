@@ -33,3 +33,7 @@ Post GitHub Actions Status to Discord.
 ```
 
 > :warning: `secrets.github_token` is set from Github
+
+> :warning: `secrets.github_token` needs Read and Write Permissions :warning:
+
+> Go to your Repo -> Settings -> Actions -> Workflow Permissions -> Read and Write Permission
