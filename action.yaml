@@ -27,6 +27,7 @@ inputs:
   discord-title:
     description: 'The Title to Display'
     required: false
+    default: ${{ github.workflow }}
 
   discord-message:
     description: 'The Message to Display'

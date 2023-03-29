@@ -12030,10 +12030,10 @@ function run() {
                     repo: context.repo.repo,
                     run_id: parseInt(GITHUB_RUN_ID, 10)
                 }).then(response => {
-                    //let workflowJobs = response.data.jobs;
-                    //let jobData: JobData[] = workflowJobs.filter(j => j.status === 'completed').map(j => ({ name: j.name, status: j.conclusion, url: j.html_url }));
-                    //let workflowStatus = workflowStatusFromJobs(jobData);
-                    //let color = workflowStatus === 'Success' ? clrSuccess : ( workflowStatus === 'Failure' ? clrFailure : clrCancelled);
+                    let workflowJobs = response.data.jobs;
+                    let jobData = workflowJobs.filter(j => j.status === 'completed').map(j => ({ name: j.name, status: j.conclusion, url: j.html_url }));
+                    let workflowStatus = workflowStatusFromJobs(jobData);
+                    let color = workflowStatus === 'Success' ? clrSuccess : (workflowStatus === 'Failure' ? clrFailure : clrCancelled);
                     let payload = {
                         username: username,
                         avatar_url: avatar,
@@ -12046,8 +12046,7 @@ function run() {
                                 },
                                 title: title,
                                 url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${GITHUB_RUN_ID}`,
-                                description: message,
-                                //color: color,
+                                color: color,
                                 fields: [
                                     {
                                         name: 'Repository',
